@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
+import KEY from "../key"
 
 export default function Map(props) {
   const defaultProps = {
@@ -14,7 +15,7 @@ export default function Map(props) {
   return (
     <div style={{ height: "100vh", width: "100%", position: "relative" }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyBgPeypX8AQRqIzsIRlYaODNNo5tRVNK08" }}
+        bootstrapURLKeys={{ key: KEY }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         onClick={(t) => props.addPlace(t)}
