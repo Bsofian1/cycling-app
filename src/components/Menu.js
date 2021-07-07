@@ -32,7 +32,7 @@ export default function Menu(props) {
             </button>
           </li>
           <li>
-            <button >
+            <button onClick={() => props.setEvent("")}>
               <img src={MenuLogo} alt="" />
             </button>
           </li>
@@ -82,10 +82,11 @@ const MenuWrapper = styled.div`
       }
       button:active {
         box-shadow: 0 3px 12px 0 rgba(31, 38, 135, 0.17);
+        
       }
       button:focus {
         box-shadow: 0 3px 12px 0 rgba(31, 38, 135, 0.17);
-      }
+      } 
     }
   }
 `;

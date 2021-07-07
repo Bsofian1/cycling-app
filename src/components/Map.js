@@ -3,7 +3,18 @@ import GoogleMapReact from "google-map-react";
 import Marker from "./Marker";
 import KEY from "../key"
 
+
+
 export default function Map(props) {
+
+  const places = props.place
+
+  const Markers = places.map(place => {
+    return (
+      <Marker removePlace={props.removePlace} key={place.id} lat={place.position.lat} lng={place.position.lng} event={place.event} color={place.color}/>
+    )
+  })
+
   const defaultProps = {
     center: {
       lat: 46.948,
@@ -20,7 +31,7 @@ export default function Map(props) {
         defaultZoom={defaultProps.zoom}
         onClick={(t) => props.addPlace(t)}
       >
-        <Marker lat={46.958} lng={7.4473} text="My Marker" />
+       {Markers}
       </GoogleMapReact>
     </div>
   );
