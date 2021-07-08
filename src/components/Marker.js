@@ -1,6 +1,8 @@
 import React from "react";
 import "../styles/Marker.css";
 
+import useLongPress from "../utils/useLongPress";
+
 import ViewLogo from "../img/eye.svg";
 import CoffeeLogo from "../img/coffee.svg";
 import WaterLogo from "../img/water.svg";
@@ -10,6 +12,24 @@ const Marker = (props) => {
   let icon = null;
   const { color, event, removePlace } = props;
 
+  //Remove the event
+  const onLongPress = () => {
+    console.log("longpress is triggered");
+    removePlace(props.$dimensionKey)
+  };
+
+  const onClick = () => {
+    console.log("click is triggered");
+    
+  };
+
+  const defaultOptions = {
+    shouldPreventDefault: true,
+    delay: 500,
+  };
+  const longPressEvent = useLongPress(onLongPress, onClick, defaultOptions);
+
+  //define the icon from the event name
   if (event === "water") {
     icon = WaterLogo;
   } else if (event === "coffee") {
@@ -20,9 +40,8 @@ const Marker = (props) => {
     icon = RepairLogo;
   }
 
-
   return (
-    <div onClick={()=> removePlace(props.$dimensionKey)}>
+    <div {...longPressEvent}>
       <div
         className="pin bounce"
         style={{ backgroundColor: `${color}`, cursor: "pointer" }}

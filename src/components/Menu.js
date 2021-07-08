@@ -7,32 +7,74 @@ import RepairLogo from "../img/repair.svg";
 import MenuLogo from "../img/menu.svg";
 
 export default function Menu(props) {
+  const currentEvent = props.event;
+
+  let menuItemStyleWater = {};
+  let menuItemStyleCoffee= {};
+  let menuItemStyleView = {};
+  let menuItemStyleRepair = {};
+
+  if (currentEvent === "water") {
+    menuItemStyleWater = {
+      borderBottom: "3px solid #118ab2",
+    };
+  }else{
+    menuItemStyleWater = {};
+  }
+  if (currentEvent === "coffee") {
+    menuItemStyleCoffee = {
+      borderBottom: "3px solid #ef476f",
+    };
+  }else{
+    menuItemStyleCoffee = {};
+  }
+  if (currentEvent === "view") {
+    menuItemStyleView = {
+      borderBottom: "3px solid #06d6a0",
+    };
+  }else{
+    menuItemStyleView = {};
+  }
+  if (currentEvent === "repair") {
+    menuItemStyleRepair = {
+      borderBottom: "3px solid #ffd166",
+    };
+  }else{
+    menuItemStyleRepair = {};
+  }
+
+
+
+  const handleChangeMenu = (event) => {
+    props.setEvent(event);
+  };
+
   return (
     <div>
       <MenuWrapper>
         <ul>
-          <li>
-            <button onClick={() => props.setEvent("coffee")}>
+          <li style={menuItemStyleCoffee}>
+            <button onClick={() => handleChangeMenu("coffee")}>
               <img src={CoffeeLogo} alt="" />
             </button>
           </li>
-          <li>
-            <button onClick={() => props.setEvent("view")}>
+          <li style={menuItemStyleView}>
+            <button onClick={() => handleChangeMenu("view")}>
               <img src={ViewLogo} alt="" />
             </button>
           </li>
-          <li>
-            <button onClick={() => props.setEvent("water")}>
+          <li style={menuItemStyleWater}>
+            <button onClick={() => handleChangeMenu("water")}>
               <img src={WaterLogo} alt="" />
             </button>
           </li>
-          <li>
-            <button onClick={() => props.setEvent("repair")}>
+          <li style={menuItemStyleRepair}>
+            <button onClick={() => handleChangeMenu("repair")}>
               <img src={RepairLogo} alt="" />
             </button>
           </li>
           <li>
-            <button onClick={() => props.setEvent("")}>
+            <button onClick={() => handleChangeMenu("")}>
               <img src={MenuLogo} alt="" />
             </button>
           </li>
@@ -69,7 +111,10 @@ const MenuWrapper = styled.div`
     justify-content: space-around;
     align-items: center;
     li {
+      height: 100%;
+
       button {
+        margin-top: 30px;
         border: none;
         background-color: transparent;
         width: 50px;
@@ -82,11 +127,7 @@ const MenuWrapper = styled.div`
       }
       button:active {
         box-shadow: 0 3px 12px 0 rgba(31, 38, 135, 0.17);
-        
       }
-      button:focus {
-        box-shadow: 0 3px 12px 0 rgba(31, 38, 135, 0.17);
-      } 
     }
   }
 `;
