@@ -2,18 +2,36 @@ import "./App.js";
 
 import Map from "./components/Map";
 import Menu from "./components/Menu";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
+import firebaseDb from "./Firebase";
+
+
 
 function App() {
   const [event, setEvent] = useState("");
-  const [place, setPlace] = useState([
-    {
-      id: 0,
-      event: "water",
-      position: { lat: 46.948, lng: 7.4473 },
-      color: "#118ab2",
-    },
-  ]);
+
+  const [places, setPlaces] = useState({});
+
+  useEffect(() => {
+    firebaseDb.child("places").on("value", (snapshot) => {
+      if (snapshot.val() != null) {
+        setPlaces({
+          ...snapshot.val(),
+        });
+      } else {
+        setPlaces({});
+      }
+    });
+  }, []);
+
+  const addDb = (obj) => {
+    firebaseDb.child("places").push(obj, (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  };
 
   const addPlace = (e) => {
     if (event) {
@@ -33,27 +51,34 @@ function App() {
       }
 
       const newValues = {
-        id: place.length,
         event: currentEvent,
         icon: null,
         position: { lat: lat, lng: lng },
         color: color,
       };
 
-      setPlace((prevState) => {
-        return [...prevState, newValues];
-      });
+      addDb(newValues);
     }
   };
 
   const removePlace = (id) => {
-    const newList = place.filter((item) => item.id != id);
-    setPlace(newList);
+    console.log(id);
+    firebaseDb.child(`places/${id}`).remove((err) => {
+      if (err) {
+        console.log(err);}
+      // } else {
+      //   setPlaces({});
+      // }
+    });
   };
 
   return (
     <div>
-      <Map addPlace={addPlace} place={place} removePlace={removePlace} />
+      <Map
+        addPlace={addPlace}
+        place={places}
+        removePlace={removePlace}
+      />
       <Menu event={event} setEvent={setEvent} />
     </div>
   );

@@ -12,15 +12,15 @@ const Marker = (props) => {
   let icon = null;
   const { color, event, removePlace } = props;
 
+  //Clicks events
   //Remove the event
   const onLongPress = () => {
-    console.log("longpress is triggered");
     removePlace(props.$dimensionKey)
   };
 
+  //Add on click on the same component that longClick
   const onClick = () => {
     console.log("click is triggered");
-    
   };
 
   const defaultOptions = {

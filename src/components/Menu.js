@@ -124,6 +124,12 @@ const MenuWrapper = styled.div`
           width: 25px;
           color: black;
         }
+        @media(max-width: 500px){
+        margin-top: 15px;
+      }
+      }
+      @media(max-width: 500px){
+        margin-top: 0;
       }
       button:active {
         box-shadow: 0 3px 12px 0 rgba(31, 38, 135, 0.17);
