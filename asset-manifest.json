@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/cycling-app/static/css/main.9c011fde.chunk.css",
+    "main.js": "/cycling-app/static/js/main.fa0a11d4.chunk.js",
+    "main.js.map": "/cycling-app/static/js/main.fa0a11d4.chunk.js.map",
+    "runtime-main.js": "/cycling-app/static/js/runtime-main.cd7ab03d.js",
+    "runtime-main.js.map": "/cycling-app/static/js/runtime-main.cd7ab03d.js.map",
+    "static/js/2.82084c05.chunk.js": "/cycling-app/static/js/2.82084c05.chunk.js",
+    "static/js/2.82084c05.chunk.js.map": "/cycling-app/static/js/2.82084c05.chunk.js.map",
+    "index.html": "/cycling-app/index.html",
+    "static/css/main.9c011fde.chunk.css.map": "/cycling-app/static/css/main.9c011fde.chunk.css.map",
+    "static/js/2.82084c05.chunk.js.LICENSE.txt": "/cycling-app/static/js/2.82084c05.chunk.js.LICENSE.txt",
+    "static/media/coffee.042e4394.svg": "/cycling-app/static/media/coffee.042e4394.svg",
+    "static/media/eye.132979f2.svg": "/cycling-app/static/media/eye.132979f2.svg",
+    "static/media/menu.a1380c45.svg": "/cycling-app/static/media/menu.a1380c45.svg",
+    "static/media/repair.9e73c5ea.svg": "/cycling-app/static/media/repair.9e73c5ea.svg",
+    "static/media/water.283de585.svg": "/cycling-app/static/media/water.283de585.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cd7ab03d.js",
+    "static/js/2.82084c05.chunk.js",
+    "static/css/main.9c011fde.chunk.css",
+    "static/js/main.fa0a11d4.chunk.js"
+  ]
+}
